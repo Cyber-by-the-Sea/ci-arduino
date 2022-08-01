@@ -441,7 +441,7 @@ def test_examples_in_folder(folderpath):
             if os.path.exists(gen_file_name):
                 cmd = ['arduino-cli', 'compile', '--build-property', 'build.extra_flags=-Werror,-Wall', '--warnings', 'all', '--fqbn', fqbn, '-e', folderpath]
             else:
-                cmd = ['arduino-cli', 'compile', '--build-property', 'build.extra_flags=-Werror,-Wall',, '--warnings', 'all', '--fqbn', fqbn, folderpath]
+                cmd = ['arduino-cli', 'compile', '--build-property', 'build.extra_flags=-Werror,-Wall', '--warnings', 'all', '--fqbn', fqbn, folderpath]
         else:
             cmd = ['arduino-cli', 'compile', '--warnings', 'none', '--export-binaries', '--fqbn', fqbn, folderpath]
         proc = subprocess.Popen(cmd, stdout=subprocess.PIPE,
