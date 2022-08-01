@@ -439,9 +439,9 @@ def test_examples_in_folder(folderpath):
 
         if BUILD_WARN:
             if os.path.exists(gen_file_name):
-                cmd = ['arduino-cli', 'compile', '--build-property', 'build.extra_flags=-Wextra', '--warnings', 'all', '--fqbn', fqbn, '-e', folderpath]
+                cmd = ['arduino-cli', 'compile', '--build-property', 'compiler.cpp.extra_flags="-Wall -Wextra"', '--warnings', 'all', '--fqbn', fqbn, '-e', folderpath]
             else:
-                cmd = ['arduino-cli', 'compile', '--build-property', 'build.extra_flags=-Wextra', '--warnings', 'all', '--fqbn', fqbn, folderpath]
+                cmd = ['arduino-cli', 'compile', '--build-property', 'compiler.cpp.extra_flags="-Wall -Wextra"', '--warnings', 'all', '--fqbn', fqbn, folderpath]
         else:
             cmd = ['arduino-cli', 'compile', '--warnings', 'none', '--export-binaries', '--fqbn', fqbn, folderpath]
         proc = subprocess.Popen(cmd, stdout=subprocess.PIPE,
@@ -502,7 +502,7 @@ def test_examples_in_learningrepo(folderpath):
             ColorPrint.print_warn("skipping")
             continue
 
-        cmd = ['arduino-cli', 'compile', '--build-property', 'build.extra_flags=-Wextra', '--warnings', 'all', '--fqbn', fqbn, projectpath]
+        cmd = ['arduino-cli', 'compile', '--build-property', 'compiler.cpp.extra_flags="-Wall -Wextra"', '--warnings', 'all', '--fqbn', fqbn, projectpath]
         proc = subprocess.Popen(cmd, stdout=subprocess.PIPE,
                                 stderr=subprocess.PIPE)
         r = proc.wait()
